@@ -1,0 +1,295 @@
+:root {
+    --color-boton: rgb(0, 191, 255);
+    --color-boton-active: rgb(0, 64, 255);
+    --color-boton-hover: rgb(0, 128, 255);
+    --color-error: rgb(255, 0, 0);
+    --color-exito: rgb(0, 255, 0);
+    --color-fondo: rgb(240, 248, 255);
+    --color-primario: rgb(0, 191, 255);
+    --color-secundario: rgb(0, 128, 255);
+    --color-sombra: rgba(0, 0, 0, 0.1);
+    --color-terciario: rgb(0, 64, 255);
+    --color-texto: rgb(0, 0, 0);
+    --fuente-principal: 'Arial', sans-serif;
+    --fuente-secundaria: 'Verdana', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: var(--fuente-principal);
+    margin: 0;
+    padding: 0;
+}
+
+.cabecera {
+    background: #3F5EFB;
+    background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(146, 83, 188, 1) 50%, rgba(252, 70, 107, 1) 100%);
+    border-bottom: 5px solid var(--color-secundario);
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 4px 8px var(--color-sombra);
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+}
+
+.cabecera img {
+    background-color: white;
+    border-radius: 100%;
+    box-shadow: 10px 10px 15px var(--color-sombra);
+    height: 150px;
+    margin-right: 50px;
+}
+
+.cabecera .texto-cabecera {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 20px;
+}
+
+.formulario {
+    background-color: var(--color-fondo);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px var(--color-sombra);
+    margin: 20px auto;
+    max-width: 800px;
+    padding: 30px;
+    width: 90%;
+    
+}
+
+.formulario form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.f1, .f2, .f3, .f4, .f5, .f6 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: start;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+}
+
+.formulario label {
+    color: var(--color-texto);
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.formulario input {
+    border: 2px solid var(--color-secundario);
+    border-radius: 8px;
+    padding: 12px;
+    width: 100%;
+    font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.formulario input:focus {
+    outline: none;
+    border-color: var(--color-primario);
+    box-shadow: 0 0 0 3px rgba(0, 191, 255, 0.1);
+}
+
+.formulario input[readonly] {
+    background-color: #f8f9fa;
+    color: #6c757d;
+    cursor: not-allowed;
+    border-color: #e9ecef;
+}
+
+.formulario input[readonly]:focus {
+    border-color: #e9ecef;
+    box-shadow: none;
+}
+
+.boton {
+    background-color: var(--color-boton);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 20px;
+    padding: 15px 30px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    align-self: center;
+    min-width: 150px;
+}
+
+.boton:hover {
+    background-color: var(--color-boton-hover);
+    transform: translateY(-2px);
+}
+
+.boton:active {
+    background-color: var(--color-boton-active);
+    transform: translateY(0);
+}
+
+.mensaje-error {
+    background-color: var(--color-error);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 12px;
+    margin-top: 5px;
+    display: none;
+    box-shadow: 0 2px 4px rgba(255, 0, 0, 0.2);
+}
+
+.campo-error {
+    background-color: lightyellow !important;
+    border-color: var(--color-error) !important;
+    border-width: 2px !important;
+}
+
+.campo-valido {
+    background-color: lightgreen !important;
+    border-color: var(--color-exito) !important;
+}
+
+.radio-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 8px;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: normal;
+    cursor: pointer;
+    margin-bottom: 0;
+}
+
+.radio-label input[type="radio"] {
+    width: auto;
+    margin: 0;
+}
+
+.formulario select {
+    border: 2px solid var(--color-secundario);
+    border-radius: 8px;
+    padding: 8px;
+    width: 100%;
+    font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: white;
+}
+
+.formulario select:focus {
+    outline: none;
+    border-color: var(--color-primario);
+    box-shadow: 0 0 0 3px rgba(0, 191, 255, 0.1);
+}
+
+.formulario select option {
+    padding: 5px;
+}
+
+.formulario select option:checked {
+    background-color: var(--color-primario);
+    color: white;
+}
+
+#resultados {
+    background-color: var(--color-exito);
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    display: none;
+}
+
+#resultados h3 {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+#datosEnviados {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 5px;
+    font-family: monospace;
+    white-space: pre-line;
+}
+
+.mensaje-error {
+    display: none;
+}
+
+.f6 {
+    grid-template-columns: 1fr;
+    justify-items: center;
+}
+
+.campo.terminos {
+    text-align: center;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: normal;
+    cursor: pointer;
+    margin-bottom: 0;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: auto;
+    margin: 0;
+}
+
+.botones {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.boton-borrar {
+    background-color: #dc3545;
+}
+
+.boton-borrar:hover {
+    background-color: #c82333;
+}
+
+.boton-enviar:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.boton-enviar:disabled:hover {
+    background-color: #6c757d;
+    transform: none;
+}
+
+.formulario input[type="file"] {
+    padding: 8px;
+    background-color: white;
+    border: 2px solid var(--color-secundario);
+    border-radius: 8px;
+    width: 100%;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.formulario input[type="file"]:focus {
+    outline: none;
+    border-color: var(--color-primario);
+    box-shadow: 0 0 0 3px rgba(0, 191, 255, 0.1);
+}

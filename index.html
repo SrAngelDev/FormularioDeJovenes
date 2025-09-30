@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/script.js" defer></script>
+    <script>
+      function mostrar(elemento) {
+        elemento.style.display = "block";
+      }
+
+      function noMostrar(elemento) {
+        elemento.style.display = "none";
+      }
+
+      function entraFoco(elemento) {
+        elemento.style.backgroundColor = "lightblue";
+      }
+
+      function saleFoco(elemento) {
+        elemento.style.backgroundColor = "";
+      }
+
+      function validarStringInside(elemento, min, max, capaerror) {
+        if (!validarString(elemento.value, min, max)) {
+          elemento.style.backgroundColor = "lightyellow";
+          elemento.style.borderColor = "red";
+          mostrar(capaerror);
+        } else {
+          elemento.style.backgroundColor = "";
+          elemento.style.borderColor = "";
+          noMostrar(capaerror);
+        }
+      }
+
+      function validarTelefonoInside(elemento, capaerror) {
+        if (!validarTelefono(elemento.value)) {
+          elemento.style.backgroundColor = "lightyellow";
+          elemento.style.borderColor = "red";
+          mostrar(capaerror);
+        } else {
+          elemento.style.backgroundColor = "";
+          elemento.style.borderColor = "";
+          noMostrar(capaerror);
+        }
+      }
+
+      function validarEdadInside(elemento, min, max, capaerror) {
+        if (!validarEdad(elemento.value, min, max)) {
+          elemento.style.backgroundColor = "lightyellow";
+          elemento.style.borderColor = "red";
+          mostrar(capaerror);
+        } else {
+          elemento.style.backgroundColor = "";
+          elemento.style.borderColor = "";
+          noMostrar(capaerror);
+        }
+      }
+
+      function validarCpInside(elemento, min, max, capaerror) {
+        if (!validarCp(elemento.value, min, max)) {
+          elemento.style.backgroundColor = "lightyellow";
+          elemento.style.borderColor = "red";
+          mostrar(capaerror);
+        } else {
+          elemento.style.backgroundColor = "";
+          elemento.style.borderColor = "";
+          noMostrar(capaerror);
+        }
+      }
+
+      function validarInteresesInside(elemento, capaerror) {
+        if (!validarIntereses(elemento)) {
+          elemento.style.backgroundColor = "lightyellow";
+          elemento.style.borderColor = "red";
+          mostrar(capaerror);
+        } else {
+          elemento.style.backgroundColor = "";
+          elemento.style.borderColor = "";
+          noMostrar(capaerror);
+        }
+      }
+
+    </script>
+  </head>
+  <body>
+    <div class="cabecera">
+      <img src="img/logoExtra2.png" alt="Logo DeJovenes Leganés" />
+      <div class="texto-cabecera">
+        <h1>DeJovenes Leganés</h1>
+        <p>Unete al club</p>
+      </div>
+    </div>
+    <div class="formulario">
+      <form id="formulario" onsubmit="return validarFormulario()">
+        <div class="f1">
+          <div class="campo">
+            <label for="nombre">Nombre:</label>
+            <input
+              type="text"
+              id="nombre"
+              name="nombre"
+              placeholder="Introduce tu nombre"
+              onfocus="entraFoco(this)"
+              onblur="saleFoco(this); validarNombreInside(this, 2, 60, errorNombre)"
+            />
+            <p class="mensaje-error" id="errorNombre">
+              El nombre debe tener entre 2 y 60 caracteres
+            </p>
+          </div>
+          <div class="campo">
+            <label for="apellido">Apellido:</label>
+            <input 
+              type="text" 
+              id="apellido" 
+              name="apellido" 
+              placeholder="Introduce tu apellido"
+              onfocus="entraFoco(this)"
+              onblur="saleFoco(this); validarApellidoInside(this, 2, 80, errorApellido)"
+            />
+            <p class="mensaje-error" id="errorApellido">
+              El apellido debe tener entre 2 y 80 caracteres
+            </p>
+          </div>
+        </div>
+
+        <div class="f2">
+          <div class="campo">
+            <label for="dni">DNI:</label>
+            <input 
+              type="text" 
+              id="dni" 
+              name="dni" 
+              placeholder="Ej: 12345678A"
+              onfocus="entraFoco(this)"
+              onblur="saleFoco(this); validarDniInside(this, errorDni)"
+            />
+            <p class="mensaje-error" id="errorDni">
+              El DNI debe tener entre 7 y 9 caracteres y formato válido
+            </p>
+          </div>
+          <div class="campo">
+            <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+            <input 
+              type="text" 
+              id="fechaNacimiento" 
+              name="fechaNacimiento" 
+              placeholder="dd/mm/yyyy"
+              onfocus="entraFoco(this)"
+              onblur="saleFoco(this); validarFechaInside(this, errorFechaNacimiento)"
+            />
+            <p class="mensaje-error" id="errorFechaNacimiento">
+              La fecha debe tener formato dd/mm/yyyy y no ser superior a hoy
+            </p>
+          </div>
+        </div>
+
+        <div class="f3">
+          <div class="campo">
+            <label>Sexo:</label>
+            <div class="radio-group">
+              <label class="radio-label">
+                <input type="radio" id="masculino" name="sexo" value="masculino" 
+                       onchange="validarSexoInside(errorSexo)" />
+                Masculino
+              </label>
+              <label class="radio-label">
+                <input type="radio" id="femenino" name="sexo" value="femenino" 
+                       onchange="validarSexoInside(errorSexo)" />
+                Femenino
+              </label>
+              <label class="radio-label">
+                <input type="radio" id="noBinario" name="sexo" value="no binario" 
+                       onchange="validarSexoInside(errorSexo)" />
+                No binario
+              </label>
+            </div>
+            <p class="mensaje-error" id="errorSexo">
+              Debes seleccionar una opción de sexo
+            </p>
+          </div>
+          <div class="campo">
+            <label for="subirDni">Subir DNI:</label>
+            <input 
+              type="file" 
+              id="subirDni" 
+              name="subirDni" 
+              accept=".jpg,.jpeg,.png,.gif"
+              onchange="validarArchivoInside(this, errorSubirDni)"
+            />
+            <p class="mensaje-error" id="errorSubirDni">
+              Debes subir un archivo en formato JPG, JPEG, PNG o GIF
+            </p>
+          </div>
+        </div>
+
+        <div class="f4">
+          <div class="campo">
+            <label for="intereses">Intereses Personales:</label>
+            <select 
+              id="intereses" 
+              name="intereses" 
+              multiple 
+              size="4"
+              onblur="validarInteresesInside(this, errorIntereses)"
+            >
+              <option value="deportes">Deportes</option>
+              <option value="musica">Música</option>
+              <option value="lectura">Lectura</option>
+              <option value="cine">Cine</option>
+              <option value="viajes">Viajes</option>
+              <option value="tecnologia">Tecnología</option>
+              <option value="arte">Arte</option>
+              <option value="cocina">Cocina</option>
+            </select>
+            <p class="mensaje-error" id="errorIntereses">
+              Debes seleccionar al menos un interés
+            </p>
+          </div>
+          <div class="campo">
+            <label for="codigoPostal">Código Postal:</label>
+            <input 
+              type="text" 
+              id="codigoPostal" 
+              name="codigoPostal" 
+              placeholder="Ej: 28911"
+              onfocus="entraFoco(this)"
+              onblur="saleFoco(this); validarCodigoPostalInside(this, errorCodigoPostal)"
+            />
+            <p class="mensaje-error" id="errorCodigoPostal">
+              El código postal debe tener entre 4 y 5 caracteres
+            </p>
+          </div>
+        </div>
+
+        <div class="f5">
+          <div class="campo">
+            <label for="provincia">Provincia:</label>
+            <input 
+              type="text" 
+              id="provincia" 
+              name="provincia" 
+              placeholder="Se autocompleta según el código postal"
+              readonly
+              title="Este campo se completa automáticamente al introducir el código postal"
+            />
+            <p class="mensaje-error" id="errorProvincia">
+              La provincia no puede estar vacía
+            </p>
+          </div>
+          <div class="campo">
+            <label for="situacionLaboral">Situación Laboral:</label>
+            <select 
+              id="situacionLaboral" 
+              name="situacionLaboral"
+              onblur="validarSituacionLaboralInside(this, errorSituacionLaboral)"
+            >
+              <option value="">Selecciona una opción</option>
+              <option value="estudiante" selected>Estudiante</option>
+              <option value="empleado">Empleado</option>
+              <option value="desempleado">Desempleado</option>
+              <option value="autonomo">Autónomo</option>
+              <option value="jubilado">Jubilado</option>
+            </select>
+            <p class="mensaje-error" id="errorSituacionLaboral">
+              Debes seleccionar una situación laboral
+            </p>
+          </div>
+        </div>
+
+        <div class="f6">
+          <div class="campo terminos">
+            <label class="checkbox-label">
+              <input 
+                type="checkbox" 
+                id="terminos" 
+                name="terminos"
+                onchange="validarTerminosInside(this, errorTerminos)"
+              />
+              Acepto los términos y condiciones
+            </label>
+            <p class="mensaje-error" id="errorTerminos">
+              Debes aceptar los términos y condiciones
+            </p>
+          </div>
+        </div>
+
+        <div class="botones">
+          <button class="boton boton-borrar" type="button" onclick="borrarFormulario()">Borrar</button>
+          <button class="boton boton-enviar" type="submit" id="botonEnviar" disabled>Enviar</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
